@@ -11,6 +11,9 @@ const fvttCyphers = fguToFvttCyphers(fguCyphers);
 fs.mkdirSync("fvtt-cyphers", { recursive: true });
 
 // write out a json file for each cypher
-fvttCyphers.forEach((cypher) =>
-  fs.writeFileSync(`fvtt-cyphers/fvtt-Item-${sanitizeFilename(cypher.name)}.json`, JSON.stringify(cypher))
-);
+// fvttCyphers.forEach((cypher) =>
+//   fs.writeFileSync(`fvtt-cyphers/fvtt-Item-${sanitizeFilename(cypher.name)}.json`, JSON.stringify(cypher))
+// );
+
+// write out a single array of all the cyphers
+fs.writeFileSync(`fvtt-cyphers/compendium-import.json`, JSON.stringify(fvttCyphers));
