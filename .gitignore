@@ -1,0 +1,6 @@
+fvtt-cyphers
+node_modules
+build
+**/*.xml
+!**/test/**/*.xml
+fvtt-Item-name.json

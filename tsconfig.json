@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "outDir": "./build",
+      "allowJs": false,
+      "target": "es6",
+      "module": "commonjs",
+      "noImplicitAny": true,
+      "moduleResolution": "node",
+      "rootDir": "src",
+      "strict": true,
+      "esModuleInterop": true,
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["./**/tests/**"]
+  }
