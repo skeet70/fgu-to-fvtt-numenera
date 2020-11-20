@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "prettier --config .prettierrc 'src/**/*.ts' --write && eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "jest",
+    "test": "jest --forceExit",
     "build": "yarn lint && yarn test && tsc",
     "start": "yarn build && node build/index.js"
   },

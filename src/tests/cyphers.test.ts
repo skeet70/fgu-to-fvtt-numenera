@@ -1,4 +1,5 @@
-import { FguNumenera, fguToFvttCyphers } from "../cyphers";
+import { fguToFvtt } from "../item-conversions";
+import { FguNumenera } from "../item-types";
 
 describe("fguToFvttCyphers", () => {
   it("happy path converts how we expect", () => {
@@ -21,6 +22,7 @@ describe("fguToFvttCyphers", () => {
     const expected = {
       name: "X-ray Goggles",
       type: "cypher",
+      img: "icons/svg/pill.svg",
       data: {
         identified: false,
         level: null,
@@ -31,7 +33,7 @@ describe("fguToFvttCyphers", () => {
       }
     };
 
-    expect(fguToFvttCyphers({ "id-irrelevant": fguCypher })).toEqual([expected]);
+    expect(fguToFvtt({ "id-irrelevant": fguCypher })).toEqual([expected]);
   });
 
   it("handles multiple paragraphs", () => {
@@ -54,6 +56,7 @@ describe("fguToFvttCyphers", () => {
     const expected = {
       name: "X-ray Goggles",
       type: "cypher",
+      img: "icons/svg/pill.svg",
       data: {
         identified: false,
         level: null,
@@ -64,6 +67,6 @@ describe("fguToFvttCyphers", () => {
       }
     };
 
-    expect(fguToFvttCyphers({ "id-irrelevant": fguCypher })).toEqual([expected]);
+    expect(fguToFvtt({ "id-irrelevant": fguCypher })).toEqual([expected]);
   });
 });
