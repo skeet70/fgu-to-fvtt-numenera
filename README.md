@@ -5,9 +5,8 @@ This is a quick project that converts Fantasy Grounds Unity Numenera items (cyph
 _Currently only cyphers are supported._
 
 1. Clone this repository.
-1. Copy your `..\Fantasy Grounds\campaigns\Cyphers\db.xml` or equivalent into this folder as `./cyphers.xml`.
-1. Run `yarn && yarn start`.
-1. Importable Cypher items will be placed in `./fvtt-cyphers/compendium-import.json`.
+1. Run `yarn && yarn start --fgu-xml path/to/db.xml` where the `db.xml` is in whatever campaign/module's items you're trying to import (for ex `Fantasy Grounds\campaigns\Cyphers\db.xml`).
+1. Importable Cypher items will be placed in `./fvtt-compendium-for-import.json`.
 
 Level die expressions are expected to be in the `nonid_notes` FGU field.
 
@@ -25,14 +24,14 @@ var createManyItems = (items) => {
   return items.map((item) => new Item(item));
 };
 
-// retrieved this by looking at game.packs
+// retrieve this by looking at game.packs
 var moduleName = "<your world name>";
 var packName = "<your compendium pack name>";
 
 // Reference a Compendium pack by it's collection ID
 var pack = game.packs.find((p) => p.collection === `${moduleName}.${packName}`);
 
-// Pasted in a JSON array of objects that look like a subset of the form given by the exporter in the app
+// Paste in the content of `fvtt-compendium-for-import.json`
 var content = [
   {
     name: "example",
@@ -48,6 +47,10 @@ var content = [
   }
 ];
 
+// or fetch the json if you have it on your server somewhere (or served from elsewhere on the web)
+// var response = await fetch("worlds/myworld/data/import.json");
+// var content = await response.json();
+
 // Create temporary Item entities which impose structure on the imported data
 var items = createManyItems(content);
 
@@ -57,7 +60,3 @@ for (let i of items) {
   console.log(`Imported Item ${i.name} into Compendium pack ${pack.collection}`);
 }
 ```
-
-TODO:
-
-1. Support the rest of the Numenera item types.

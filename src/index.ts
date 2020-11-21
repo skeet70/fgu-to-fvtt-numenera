@@ -2,9 +2,11 @@ import * as parser from "fast-xml-parser";
 import * as fs from "fs";
 import { fguToFvtt } from "./item-conversions";
 import { FguItemMap, FguParsedDb } from "./item-types";
+import { program } from "commander";
 
-// TODO: get file passed in
-const fguFile = fs.readFileSync("./equipment.xml", "utf8");
+program.requiredOption("-x, --fgu-xml <path>", "The FGU campaign db.xml to extract items from.");
+program.parse(process.argv);
+const fguFile = fs.readFileSync(program.fguXml, "utf8");
 const fguItemsDb: FguParsedDb = parser.parse(fguFile);
 
 // pull out the items and if there are categories, combine all the categories into one map

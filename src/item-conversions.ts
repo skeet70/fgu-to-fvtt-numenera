@@ -93,7 +93,7 @@ export const fguToFvttArmor = (armor: FguArmor): FvttArmor => {
 
 // group 1: threshold upper range or — if undepletable
 // group 3: depletion die, not an expression. not present if undepletable
-const depletionRegex = /depletion:\s*\d?-?(\d|\d|—|-)(\s*in\s*\d(d\d*))?/gim;
+const depletionRegex = /depletion:\s*\d?(?:–|-)?(\d|\d|—|-)(\s*in\s*\d(d\d*))?/gim;
 export const fguToFvttArtifact = (artifact: FguArtifact): FvttArtifact => {
   const effect = flattenFguNotes(artifact.notes.p);
   const levelDie = parseLevelDie(artifact.nonid_notes || "");
@@ -101,7 +101,6 @@ export const fguToFvttArtifact = (artifact: FguArtifact): FvttArtifact => {
   const matches = [...effect.matchAll(depletionRegex)][0];
 
   // try a few ways to get these. They start on defaults.
-  // TODO: whether it is depleting or not is working, but setting the die and threshold isn't
   let depletionThreshold = 1;
   let depletable = true;
   let depletionDie = "d100";
