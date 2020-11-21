@@ -6,7 +6,7 @@ _Currently only cyphers are supported._
 
 1. Clone this repository.
 1. Run `yarn && yarn start --fgu-xml path/to/db.xml` where the `db.xml` is in whatever campaign/module's items you're trying to import (for ex `Fantasy Grounds\campaigns\Cyphers\db.xml`).
-1. Importable Cypher items will be placed in `./fvtt-compendium-for-import.json`.
+1. Importable items will be placed in `./fvtt-compendium-for-import.json`.
 
 Level die expressions are expected to be in the `nonid_notes` FGU field.
 
